@@ -11,7 +11,7 @@ create table if not exists public.users (
   preferred_games text[] not null default '{}',
   game_name text,
   character_id text,
-  wallet_balance numeric(12, 2) not null default 2840,
+  wallet_balance numeric(12, 2) not null default 0,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -170,6 +170,6 @@ alter table public.team_members replica identity full;
 
 -- Enable these tables under Database > Replication for realtime updates.
 
--- The React client currently authenticates with Firebase. In production, configure
--- Supabase Third-Party Auth to trust Firebase ID tokens so auth.uid() matches the
--- Firebase user id. Otherwise, route these writes through a trusted Edge Function.
+-- Apply migrations/20260927_arena_integrity.sql immediately after this base schema.
+-- The UUID foreign keys require Supabase Auth. Firebase-only login cannot write
+-- arena data; when Supabase is configured the client uses Supabase Auth exclusively.

@@ -209,3 +209,21 @@ body { min-height: 100%; overflow-x: hidden; }
 @media (max-width: 800px) { .main-content { min-height: 100dvh; overflow: visible; }.page-content, .subpage-view, .teams-page { height: auto; max-height: none; min-height: calc(100dvh - 67px); overflow: visible; padding-bottom: 90px; }.teams-toolbar { align-items: flex-start; flex-direction: column; gap: 18px; }.teams-toolbar .primary-button { width: 100%; }.teams-grid { grid-template-columns: minmax(0, 1fr); }.team-file-float { bottom: 20px; left: 20px; right: 20px; top: auto; justify-content: space-between; }.team-file-float input { max-width: 145px; } }
 @media (max-width: 800px) { .tournament-insights { grid-template-columns: 1fr; margin: 20px; }.tracker-row { grid-template-columns: minmax(0, 1fr) auto; }.tracker-row > span { grid-column: 1 / -1; } }
 @media (max-width: 700px) { .subpage-header { align-items: flex-start; flex-direction: column; gap: 20px; }.detail-grid { grid-template-columns: 1fr; } }
+
+/* Keep forms reachable on narrow screens and when the on-screen keyboard opens. */
+.auth-modal, .join-modal, .team-modal { max-height: calc(100dvh - 40px); overflow-y: auto; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+.profile-message, .auth-error, .admin-message { overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .auth-modal { padding: 28px 20px; }
+  .topbar { padding: 0 10px; }
+  .topbar-actions { gap: 6px; }
+  .profile-layout { grid-template-columns: minmax(0, 1fr); }
+  .profile-side, .profile-main { min-width: 0; }
+  .admin-fields label:last-child:nth-child(3) { grid-column: auto; }
+}
+@media (max-width: 520px) {
+  .profile-page-header { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .profile-avatar-wrap, .danger-zone { flex-wrap: wrap; }
+}
+.join-form select { background: #0C1016; border: 1px solid #28313B; border-radius: 5px; color: var(--text); padding: 11px; max-width: 100%; }

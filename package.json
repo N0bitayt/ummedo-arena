@@ -26,7 +26,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:db": "node scripts/test-database.mjs",
+    "test:ci": "react-scripts test --watchAll=false --runInBand",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run test:ci && npm run test:db && npm run typecheck && npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8"
   }
 }
